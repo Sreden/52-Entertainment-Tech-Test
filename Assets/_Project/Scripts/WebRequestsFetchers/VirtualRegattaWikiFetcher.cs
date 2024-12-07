@@ -12,6 +12,7 @@ public class VirtualRegattaWikiFetcher : MonoBehaviour
 
     public event Action<string> OnDescriptionLoaded;
     public event Action<Texture2D> OnTextureDownloadedOrLoaded;
+
     public void FetchData()
     {
         StartCoroutine(LoadWikipediaData());
@@ -28,8 +29,7 @@ public class VirtualRegattaWikiFetcher : MonoBehaviour
             var data = JsonUtility.FromJson<WikipediaSummary>(request.downloadHandler.text);
             OnDescriptionLoaded(data.extract);
 
-            // TODO: 
-            //StartCoroutine(LoadLogoImage());
+            StartCoroutine(LoadLogoImage(data.thumbnail.source));
         }
         else
         {
@@ -53,32 +53,4 @@ public class VirtualRegattaWikiFetcher : MonoBehaviour
             Debug.LogError("Failed to fetch logo image: " + request.error);
         }
     }
-}
-
-
-/// <summary>
-/// Return Example :
-/// 
-/// "thumbnail": {
-///    "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Logo_Virtual_Regatta.svg/320px-Logo_Virtual_Regatta.svg.png",
-///        "width": 320,
-///        "height": 149
-/// },
-/// "extract": "Virtual Regatta is an online web browser sailing race simulator, though the development of a mobile app version of the game has seen a significant number of users shift to this platform in recent years."
-/// 
-/// 
-/// </summary>
-[System.Serializable]
-public class WikipediaSummary
-{
-    public Thumbnail thumbnail;
-    public string extract;
-}
-
-[System.Serializable]
-public class Thumbnail
-{
-    public string source;
-    public int width;
-    public int height;
 }
