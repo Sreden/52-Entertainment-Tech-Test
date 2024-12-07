@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class ResultDisplayer : MonoBehaviour
 {
     [SerializeField] private TMP_Text scoreText;
-    public Button rollButton;
+    public Button RollButton;
 
     public void UpdateScoreText(int newScore)
     {

@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     {
         if (resultDisplayer != null)
         {
-            resultDisplayer.rollButton.onClick.AddListener(OnRollButtonClicked);
+            resultDisplayer.RollButton.onClick.AddListener(OnRollButtonClicked);
         }
 
         if (diceController != null)
