@@ -7,13 +7,22 @@ public class DiceController : MonoBehaviour
 {
     [SerializeField] private GameObject diceGameObject;
     [SerializeField] private float rollDuration = 1f;
+    [SerializeField] private float shakeDuration = 0.5f;
+    [SerializeField] private float shakeIntensity = 0.1f;
 
+    private Transform diceParentTransform;
+    private Vector3 originalPosition;
     private bool isRolling = false;
     private Coroutine rollDiceCoroutine = null;
     private int diceResult = -1;
 
     public event Action<int> OnRollFinishedOrCanceled;
 
+    private void Start()
+    {
+        diceParentTransform = diceGameObject.transform.parent;
+        originalPosition = diceParentTransform.position;
+    }
     public void RollDice()
     {
         // Allow the player to "spam button" to be faster, and still roll dice and stack results
@@ -36,6 +45,11 @@ public class DiceController : MonoBehaviour
         diceGameObject.SetActive(value);
     }
 
+    public void Shake()
+    {
+        StartCoroutine(ShakeCoroutine());
+    }
+
     private IEnumerator RollDiceProcess()
     {
         isRolling = true;
@@ -56,7 +70,7 @@ public class DiceController : MonoBehaviour
 
     private void RotateRandomly()
     {
-        diceGameObject.transform.parent.transform.Rotate(Vector3.up, Random.Range(100f, 500f) * Time.deltaTime);
+        diceParentTransform.Rotate(Vector3.up, Random.Range(100f, 500f) * Time.deltaTime);
 
         diceGameObject.transform.Rotate(
             Random.Range(400f, 600f) * Time.deltaTime,
@@ -67,7 +81,7 @@ public class DiceController : MonoBehaviour
 
     private void SetFinalFace(int face)
     {
-        diceGameObject.transform.parent.transform.rotation = Quaternion.identity;
+        diceParentTransform.rotation = Quaternion.identity;
 
         switch (face)
         {
@@ -92,5 +106,19 @@ public class DiceController : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    private IEnumerator ShakeCoroutine()
+    {
+        float elapsedTime = 0f;
+
+        while (elapsedTime < shakeDuration)
+        {
+            diceParentTransform.position = originalPosition + (Vector3)Random.insideUnitCircle * shakeIntensity;
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        diceParentTransform.position = originalPosition;
     }
 }

@@ -92,6 +92,7 @@ public class GameManager : MonoBehaviour
         if (result == 6)
         {
             resultDisplayer.UpdateScoreText(++currentScore);
+            diceController.Shake();
         }
     }
 
