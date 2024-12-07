@@ -5,6 +5,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private ResultDisplayer resultDisplayer;
     [SerializeField] private DiceController diceController;
     [SerializeField] private VrPopupDisplayer VrPopupDisplayer;
+    [SerializeField] private VirtualRegattaWikiFetcher VrFetcher;
 
     private int currentScore = 0;
 
@@ -25,11 +26,32 @@ public class GameManager : MonoBehaviour
             VrPopupDisplayer.PopupButton.onClick.AddListener(OnPopupButtonClicked);
             VrPopupDisplayer.OnPopupClose += VrPopupDisplayer_OnPopupClose;
             VrPopupDisplayer.OnPopupOpen += VrPopupDisplayer_OnPopupOpen;
+
+            if (VrFetcher != null)
+            {
+                VrFetcher.OnDescriptionLoaded += VrFetcher_OnDescriptionLoaded;
+                VrFetcher.OnTextureDownloadedOrLoaded += VrFetcher_OnTextureDownloadedOrLoaded;
+            }
         }
     }
     private void Start()
     {
-        //TODO Fetch Data here
+        if (VrFetcher == null)
+        {
+            return;
+        }
+
+        VrFetcher.FetchData();
+    }
+
+    private void VrFetcher_OnTextureDownloadedOrLoaded(Texture2D texture)
+    {
+        VrPopupDisplayer.UpdateLogo(texture);
+    }
+
+    private void VrFetcher_OnDescriptionLoaded(string desc)
+    {
+        VrPopupDisplayer.UpdateDescription(desc);
     }
 
     private void VrPopupDisplayer_OnPopupOpen()

@@ -629,6 +629,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1868134231226287596, guid: 2d3972dbadf974b4b96bd50b8d21b9a1, type: 3}
+      propertyPath: m_overflowMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3555169303722689058, guid: 2d3972dbadf974b4b96bd50b8d21b9a1, type: 3}
       propertyPath: m_Name
       value: MainCanvas
