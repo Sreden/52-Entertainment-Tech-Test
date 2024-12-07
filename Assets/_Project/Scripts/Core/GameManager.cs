@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        Application.targetFrameRate = 60;
+
         if (resultDisplayer != null)
         {
             resultDisplayer.RollButton.onClick.AddListener(OnRollButtonClicked);
@@ -93,6 +95,9 @@ public class GameManager : MonoBehaviour
         {
             resultDisplayer.UpdateScoreText(++currentScore);
             diceController.Shake();
+#if UNITY_IOS || UNITY_ANDROID
+            Handheld.Vibrate();
+#endif
         }
     }
 

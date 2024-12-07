@@ -545,9 +545,9 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &687319397 stripped
+--- !u!114 &790881021 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1868134231226287596, guid: 2d3972dbadf974b4b96bd50b8d21b9a1, type: 3}
+  m_CorrespondingSourceObject: {fileID: 5244600869212335216, guid: 2d3972dbadf974b4b96bd50b8d21b9a1, type: 3}
   m_PrefabInstance: {fileID: 1223944579}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
@@ -629,9 +629,37 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1509808963699658627, guid: 2d3972dbadf974b4b96bd50b8d21b9a1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1509808963699658627, guid: 2d3972dbadf974b4b96bd50b8d21b9a1, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1509808963699658627, guid: 2d3972dbadf974b4b96bd50b8d21b9a1, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1509808963699658627, guid: 2d3972dbadf974b4b96bd50b8d21b9a1, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1509808963699658627, guid: 2d3972dbadf974b4b96bd50b8d21b9a1, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2778101507777041767, guid: 2d3972dbadf974b4b96bd50b8d21b9a1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3555169303722689058, guid: 2d3972dbadf974b4b96bd50b8d21b9a1, type: 3}
       propertyPath: m_Name
       value: MainCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 5244600869212335216, guid: 2d3972dbadf974b4b96bd50b8d21b9a1, type: 3}
+      propertyPath: m_text
+      value: Pas de description disponible pour le moment.
       objectReference: {fileID: 0}
     - target: {fileID: 5586841245088529755, guid: 2d3972dbadf974b4b96bd50b8d21b9a1, type: 3}
       propertyPath: m_AnchorMax.y
@@ -895,7 +923,7 @@ PrefabInstance:
     - target: {fileID: 1019263198789052689, guid: b8a0e1d277040e04b843ee7c201c0725, type: 3}
       propertyPath: desc
       value: 
-      objectReference: {fileID: 687319397}
+      objectReference: {fileID: 790881021}
     - target: {fileID: 1019263198789052689, guid: b8a0e1d277040e04b843ee7c201c0725, type: 3}
       propertyPath: panel
       value: 
