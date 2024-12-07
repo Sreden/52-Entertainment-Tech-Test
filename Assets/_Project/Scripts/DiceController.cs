@@ -31,6 +31,11 @@ public class DiceController : MonoBehaviour
         rollDiceCoroutine = StartCoroutine(RollDiceProcess());
     }
 
+    public void DisplayDice(bool value)
+    {
+        diceGameObject.SetActive(value);
+    }
+
     private IEnumerator RollDiceProcess()
     {
         isRolling = true;
