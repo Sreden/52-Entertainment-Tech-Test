@@ -25,7 +25,7 @@ public class DiceController : MonoBehaviour
             OnRollFinishedOrCanceled?.Invoke(diceResult);
         }
 
-        // To replace with API endpoint call / server call, to securise gambling games
+        // Can be replaced with API endpoint call / server call, to securise gambling games
         diceResult = Random.Range(1, 7);
 
         rollDiceCoroutine = StartCoroutine(RollDiceProcess());
@@ -56,7 +56,8 @@ public class DiceController : MonoBehaviour
 
     private void RotateRandomly()
     {
-        //TODO: Improve feeling
+        diceGameObject.transform.parent.transform.Rotate(Vector3.up, Random.Range(100f, 500f) * Time.deltaTime);
+
         diceGameObject.transform.Rotate(
             Random.Range(400f, 600f) * Time.deltaTime,
             Random.Range(400f, 600f) * Time.deltaTime,
@@ -66,6 +67,8 @@ public class DiceController : MonoBehaviour
 
     private void SetFinalFace(int face)
     {
+        diceGameObject.transform.parent.transform.rotation = Quaternion.identity;
+
         switch (face)
         {
             case 1:
