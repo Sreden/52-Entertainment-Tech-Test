@@ -58,6 +58,7 @@ public class VrPopupDisplayer : MonoBehaviour
 
         logoImage.sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
         logoImage.preserveAspect = true;
+        logoImage.gameObject.SetActive(true);
     }
 
     public void UpdateDescription(string newDesc)
